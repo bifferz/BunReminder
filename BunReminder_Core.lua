@@ -151,7 +151,7 @@ bunFrame:SetScript("OnMouseUp", function(self, button)
         BunReminder.db.x = xOfs
         BunReminder.db.y = yOfs
 
-        if self.animGroup then self.animGroup:Play() end
+        if self.animGroup and BunReminder.db.enableAnim then self.animGroup:Play() end
         return
     end
 
