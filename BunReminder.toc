@@ -5,6 +5,7 @@
 ## Author: crewtus
 ## SavedVariables: BunReminderDB
 ## X-Curse-Project-ID: 1641207
+## X-Wago-ID: 56nd5aG9
 ## X-Category: Bags & Inventory
 
 # Libraries
