@@ -4,6 +4,7 @@ local MANA_BUN_ID = 113509
 
 local defaultValues = {
     enabled = true,
+    enableAnim = true,
     point = "CENTER",
     relativePoint = "CENTER",
     x = 0,
@@ -95,8 +96,14 @@ local function UpdateFrame()
 
         bunFrame:Show()
 
-        if bunFrame.animGroup and not bunFrame.animGroup:IsPlaying() then
-            bunFrame.animGroup:Play()
+        if BunReminder.db.enableAnim then
+            if bunFrame.animGroup and not bunFrame.animGroup:IsPlaying() then
+                bunFrame.animGroup:Play()
+            end
+        else
+            if bunFrame.animGroup and bunFrame.animGroup:IsPlaying() then
+                bunFrame.animGroup:Stop()
+            end
         end
     else
         if bunFrame.animGroup and bunFrame.animGroup:IsPlaying() then
@@ -184,43 +191,47 @@ local function RegisterAceSettings()
                     UpdateFrame()
                 end,
             },
-            rolesHeader = {
+            enableAnimation = {
                 order = 3,
+                type = "toggle",
+                name = "Enable Animation",
+                desc = "Enable bounce animation.",
+                get = function() return BunReminder.db.enableAnim end,
+                set = function(_, val) BunReminder.db.enableAnim = val; UpdateFrame() end
+            },
+            rolesHeader = {
+                order = 4,
                 type = "header",
                 name = "Role Filters",
             },
             showTank = {
-                order = 4,
+                order = 5,
                 type = "toggle",
                 name = "Show for Tank",
                 get = function() return BunReminder.db.showTank end,
                 set = function(_, val) BunReminder.db.showTank = val; UpdateFrame() end,
             },
             showHealer = {
-                order = 5,
+                order = 6,
                 type = "toggle",
                 name = "Show for Healer",
                 get = function() return BunReminder.db.showHealer end,
                 set = function(_, val) BunReminder.db.showHealer = val; UpdateFrame() end,
             },
             showDPS = {
-                order = 6,
+                order = 7,
                 type = "toggle",
                 name = "Show for DPS",
                 get = function() return BunReminder.db.showDPS end,
                 set = function(_, val) BunReminder.db.showDPS = val; UpdateFrame() end,
             },
-            
-            ----------------------------------------------------
-            -- SPEC FILTERS (EXPAND/COLLAPSE TOGGLE)
-            ----------------------------------------------------
             specsHeader = {
-                order = 7,
+                order = 8,
                 type = "header",
                 name = "Advanced Filters",
             },
             toggleSpecFilters = {
-                order = 8,
+                order = 9,
                 type = "toggle",
                 name = "Show Individual Class Specialization Filters",
                 desc = "Check this to expand detailed toggles for specific specs.",
@@ -229,7 +240,7 @@ local function RegisterAceSettings()
                 set = function(_, val) BunReminder.db.showSpecFilters = val end,
             },
             classGroup = {
-                order = 9,
+                order = 10,
                 type = "group",
                 name = "Class Specializations",
                 inline = true,
