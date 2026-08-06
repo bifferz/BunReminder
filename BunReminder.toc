@@ -1,0 +1,16 @@
+## Interface: 120005, 120007, 120100
+## Version: @project-version@
+## Title: BunReminder
+## Notes: Reminds you when Mana Buns are missing from your bags
+## Author: crewtus
+## SavedVariables: BunReminderDB
+## X-Curse-Project-ID: 1641207
+## X-Category: Bags & Inventory
+
+# Libraries
+Libs\LibStub\LibStub.lua
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+
+# Main Script
+BunReminder_Core.lua
