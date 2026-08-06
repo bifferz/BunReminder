@@ -1,4 +1,9 @@
 # BunReminder
+<center> 
+
+![bouncing bun icon preview](./images/BunReminder.gif)
+
+</center>
 
 Often I find myself forgetting to get water or mana buns before starting to queue for keys. This is maybe only a priest problem (or a me problem), but I thought I would make an addon that bounces an icon in my face when I log in so I'm reminded to queue for a quick follower dungeon to grab buns. 
 
